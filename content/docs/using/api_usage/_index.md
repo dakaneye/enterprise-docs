@@ -4,23 +4,51 @@ linkTitle: "Using the API"
 weight: 4
 ---
 
-## Introduction
+The Anchore Enterprise API is a combination of the open-source Anchore Engine external API as well as enterprise-only extensions. The has been documented using the OpenAPI Specification (Swagger) and the source can be found in the [swagger.yaml](https://github.com/anchore/anchore-engine/blob/master/anchore_engine/services/apiext/swagger/swagger.yaml) document within the external API service.  There are also a variety of ways in which the API specification can be accessed.
 
-The Anchore API has been documented using the OpenAPI Specification (Swagger) and the source can be found in the [swagger.yaml](https://github.com/anchore/anchore-engine/blob/master/anchore_engine/services/apiext/swagger/swagger.yaml) document withiin the external API service.  There are also a variety of ways in which the API specification can be accessed.
+## Online Specifications
 
-### Online
+The API specifications for this release of Anchore Enterprise are available from the documentation.
 
-You can browse latest stable the Anchore API specification on [SwaggerHub](https://app.swaggerhub.com/apis/anchore/anchore-engine/)
+## Enterprise Service APIs
 
-### Local Swagger JSON
+This service, typically called `api` or `apiext` in deployment templates has two specifications that are combined to provide the full API for the service:
 
-The JSON definition for the API specification for your specific instance of Anchore can be downloaded from a running Anchore Engine service at the following URI:
+The primary external-facing API is combination of the [Engine API](specs/engine_api.yaml) and its [Enterprise Extensions API](specs/enterprise_api_swagger.yaml)
+
+[Reporting Service API](specs/reports_swagger.yaml)
+
+[RBAC Service API](specs/rbac_manager_swagger.yaml)
+
+[Notifications Service API](specs/notifications_swagger.yaml)
+
+[Feed Service API](specs/feeds_swagger.yaml)
+
+
+### Swagger JSON from a Deployment
+
+#### Engine-Compatible API
+
+The JSON definition for the Engine API specification for your specific instance of Anchore can be downloaded from a running Anchore Enterprise service at the following URI:
 
 http://{servername:port}/v1/swagger.json
 
 e.g.
 
 http://localhost:8228/v1/swagger.json
+
+This API is compatible with Anchore Engine to ensure an easy transition from using Engine to Enterprise. Additional features and extensions are available from other service endpoints (e.g. reporting and notifications) or via
+the Enterprise extension specification below.
+
+### Enterprise Extensions
+
+Anchore Enterprise includes additional API calls and features not available in Anchore Engine. These use a distinct base route and separate specification file. The file is available at:
+
+http://{servername:port}/v1/enterprise/swagger.json
+
+e.g.
+
+http://localhost:8228/v1/enterprise/swagger.json
 
 ### Local Swagger UI
 
@@ -33,4 +61,3 @@ http://{servername}:8080/
 e.g.
 
 http://localhost:8080/
-

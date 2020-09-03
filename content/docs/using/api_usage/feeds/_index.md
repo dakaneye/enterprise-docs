@@ -1,12 +1,12 @@
 ---
 title: "Anchore Enterprise Feeds Advanced API Access"
 linkTitle: "Feeds"
-weight: 1
+weight: 2
 ---
 
 Anchore Enterprise Feeds offers a RESTful API.
 
-API definition is documented using the OpenAPI/Swagger specification and can be accessed at: <hostname:port>/v1/swagger.json
+API definition is documented using the OpenAPI/Swagger specification and can be accessed at: <hostname:port>/v1/swagger.json in a deployment or [here](../specs/feeds_swagger.yaml)
 
 The API is read-only and does not require any authentication.
 

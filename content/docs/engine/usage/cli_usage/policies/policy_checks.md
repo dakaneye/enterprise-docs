@@ -32,7 +32,7 @@ Information about the latest available policy gates, triggers and parameters can
 
 | Trigger | Description                        | Parameters |
 |---------|------------------------------------|------------|
-| scans   | Triggers if the ClamAV scanner has found any matches in the image.  |  |
-
+| scans   | Triggers if any malware scanner has found any matches in the image.  |  |
+| scan_not_run | Triggers if no scan was found for the image. | | 
 
 For a more in-depth list of available gates/triggers, refer to [Anchore Policy Checks]({{< ref "/docs/overview/concepts/policy/policy_checks" >}})

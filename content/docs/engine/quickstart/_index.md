@@ -28,7 +28,7 @@ The following instructions assume you are using a system running Docker v1.12 or
 ### Step 1: Download the docker-compose.yaml file and start.
 
 ```
-# curl https://docs.anchore.com/current/docs/engine/quickstart/docker-compose.yaml > docker-compose.yaml
+# curl -O https://docs.anchore.com/current/docs/engine/quickstart/docker-compose.yaml
 # docker-compose up -d
 ```
 
@@ -52,14 +52,14 @@ You can run a command to get the status of the Anchore Engine services:
 
 ```
 # docker-compose exec api anchore-cli system status
-Service policy_engine (anchore-quickstart, http://engine-policy-engine:8228): up
-Service simplequeue (anchore-quickstart, http://engine-simpleq:8228): up
-Service catalog (anchore-quickstart, http://engine-catalog:8228): up
-Service analyzer (anchore-quickstart, http://engine-analyzer:8228): up
-Service apiext (anchore-quickstart, http://engine-api:8228): up
+Service policy_engine (anchore-quickstart, http://policy-engine:8228): up
+Service simplequeue (anchore-quickstart, http://simpleq:8228): up
+Service catalog (anchore-quickstart, http://catalog:8228): up
+Service analyzer (anchore-quickstart, http://analyzer:8228): up
+Service apiext (anchore-quickstart, http://api:8228): up
 
 Engine DB Version: 0.0.13
-Engine Code Version: 0.7.1
+Engine Code Version: 0.8.1
 ```
 
 **Note:** The first time you run Anchore Engine, it will take some time (10+ minutes, depending on network speed) for the vulnerability data to get synced into the engine.  For the best experience, wait until the core vulnerability data feeds have completed before proceeding.  You can check the status of your feed sync using the CLI:
@@ -220,7 +220,7 @@ Now that you have Anchore Engine running, you can begin to learning more about A
 1. Download the example prometheus configuration into the same directory as the docker-compose.yaml file, with name _anchore-prometheus.yml_
 
     ```
-    curl https://docs.anchore.com/current/docs/quickstart/anchore-prometheus.yml > anchore-prometheus.yml
+    curl -O https://docs.anchore.com/current/docs/quickstart/anchore-prometheus.yml
     docker-compose up -d
     ```
 
@@ -259,7 +259,7 @@ Now that you have Anchore Engine running, you can begin to learning more about A
 1. Download the nginx configuration into the same directory as the docker-compose.yaml file, with name _anchore-swaggerui-nginx.conf_
 
     ```
-    curl https://docs.anchore.com/current/docs/quickstart/anchore-swaggerui-nginx.conf > anchore-swaggerui-nginx.conf
+    curl -O https://docs.anchore.com/current/docs/quickstart/anchore-swaggerui-nginx.conf
     docker-compose up -d
     ```
 

@@ -51,6 +51,10 @@ At this point the account exists but contains no users. To create a user with a 
 
 Disabling an account prevents any of that account's users from being able to perform any actions in the system. It also disabled all asynchronous updates on resources in that account, effectively freezing the state of the account and all of its resources. Disabling an account is idempotent, if it is already disabled the operation has no effect. Accounts may be re-enabled after being disabled.
 
+{{% alert title="Note" color="warning" %}}
+The admin account may not be disabled. 
+{{% /alert %}}
+
 ```
 anchore-cli account disable account1
 Success

@@ -148,7 +148,8 @@ Create a kubernetes secret containing DockerHub credentials with access to the p
 
 Install Anchore Enterprise:
 
-`helm repo add anchore https://charts.anchore.io'
+`helm repo add anchore https://charts.anchore.io`
+
 `helm install --name anchore-enterprise anchore/anchore-engine -f anchore_values.yaml`
 
 It will take the system several minutes to bootstrap. You can checks on the status of the pods by running `kubectl get pods`:

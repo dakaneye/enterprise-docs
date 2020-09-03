@@ -176,6 +176,13 @@ Checks against content and/or presence of files retrieved at analysis time from 
 | content_regex | Evaluation of regex on retrieved file content | check | The type of check to perform with the regex | match |
 | content_regex | Evaluation of regex on retrieved file content | regex | The regex to evaluate against the content of the file | .*SSlEnabled.* |
 
+### Gate: Malware
+
+| Trigger | Description                        | Parameters |
+|---------|------------------------------------|------------|
+| scans   | Triggers if any malware scanner has found any matches in the image.  |  |
+| scan_not_run | Triggers if no scan was found for the image. | | 
+
 
 ### Next Steps
 

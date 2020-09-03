@@ -5,15 +5,16 @@ weight: 5
 ---
 
 
-Anchore Engine includes the ability to read a user-supplied 'hints' file to allow users to override and/or augment the software artifacts that are 
-discovered by Anchore during its image analysis process.  The hints file, if present, contains records that describe a software package characteristics explicitly, 
-and are then added to the software bill of materials (SBOM).  For example, if the owner of a CI/CD container build process knows that there are some 
-software packages installed explicitly in a container image, but Anchore's regular analyzers are either not discovering the software or the analysis of the software 
-package is incomplete, this mechanism can be used to include that information in the image's SBOM, exactly as if the package were discovered normally.
+Anchore Enterprise includes the ability to read a user-supplied 'hints' file to allow users to override and/or augment the software artifacts that are 
+discovered by Anchore during its image analysis process.  The hints file, if present, contains records that describe a software package characteristics 
+explicitly, and are then added to the software bill of materials (SBOM).  For example, if the owner of a CI/CD container build process knows that there 
+are some software packages installed explicitly in a container image, but Anchore's regular analyzers are either not discovering the software or the 
+analysis of the software package is incomplete, this mechanism can be used to include that information in the image's SBOM, exactly as if the package 
+were discovered normally.
 
 ### Configuration
 
-See [Configuring Content Hints]({{< ref "/docs/engine/engine_installation/configuration/content_hints" >}})
+See [Configuring Content Hints]({{< ref "/docs/installation/configuration/content_hints" >}})
 
 Once enabled, the analyzer services will look for a file with a specific name, location and format located within the container image - ```/anchore_hints.json```.  
 The format of the file is illustrated using some examples, below.
@@ -23,8 +24,8 @@ The format of the file is illustrated using some examples, below.
 
 OS Packages are those that will represent packages installed using OS / Distro style package managers.  Currently supported package types are ```rpm, dpkg, apkg``` 
 for RedHat, Debian, and Alpine flavored package managers respectively.  Note that, for OS Packages, the name of the package is unique per SBOM, meaning 
-that only one package named 'somepackage' can exist in an image's SBOM, and specifying a name in the hints file that conflicts with one with the same name 
-discovered by the Anchore analyzers will result in the record from the hints file taking precedence (override).
+that only one package named 'somepackage' can exist in an image's SBOM, and specifying a name in the hints file that conflicts with one with the same 
+name discovered by the Anchore analyzers will result in the record from the hints file taking precedence (override).
 
 * Minimum required values for a package record in anchore_hints.json
 
@@ -57,7 +58,7 @@ discovered by the Anchore analyzers will result in the record from the hints fil
 Non-OS / language package records are similar in form to the OS package records, but with some extra/different characteristics being supplied, namely 
 the ```location``` field.  Since multiple non-os packages can be installed that have the same name, the location field is particularly important as it 
 is used to distinguish between package records that might otherwise be identical.  Valid types for non-os packages are currently ```java, python, gem, npm, nuget, go, binary```.  
-For the latest types that are available, see the ```anchore-cli image content <someimage>``` output, which lists available types for any given deployment of Anchore Engine.
+For the latest types that are available, see the ```anchore-cli image content <someimage>``` output, which lists available types for any given deployment of Anchore Enterprise.
 
 * Minimum required values for a package record in anchore_hints.json
 
@@ -86,7 +87,7 @@ For the latest types that are available, see the ```anchore-cli image content <s
 
 ### Putting it all together
 
-Using the above examples, a complete anchore_hints.json file, when discovered by Anchore Engine located in ```/anchore_hints.json``` inside any container image, is provided here:
+Using the above examples, a complete anchore_hints.json file, when discovered by Anchore Enterprise located in ```/anchore_hints.json``` inside any container image, is provided here:
 
 ```
 {
