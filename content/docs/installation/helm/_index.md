@@ -59,7 +59,7 @@ To use this Helm chart with the enterprise services enabled, perform these steps
   postgresql:
     postgresPassword: <PASSWORD>
     persistence:
-      size: 50Gi
+      size: 20Gi
 
   anchoreGlobal:
     defaultAdminPassword: <PASSWORD>
