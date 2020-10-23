@@ -3,5 +3,6 @@
   {"version": "2.1", "current": false},
   {"version": "2.2", "current": false},
   {"version": "2.3", "current": false},
-  {"version": "2.4", "current": true}
+  {"version": "2.4", "current": false},
+  {"version": "3.0", "current": true}
 ]
