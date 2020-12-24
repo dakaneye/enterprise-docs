@@ -51,7 +51,7 @@ Anchore Enterprise uses a PostgreSQL database to store persistent data for image
 
 The Anchore Enterprise User Interface is delivered as a Docker container that can be run on any Docker compatible runtime. 
 
-The Anchore Enterprise UI module interfaces with Anchore Engine using the standard Anchore API endpoint. The UI does not require access to the Anchore Engine database, however a Redis server is used to store session information. 
+The Anchore Enterprise UI module interfaces with Anchore API using the external API endpoint. The UI requires access to the Anchore database where it creates its own namespace for persistent configuration storage. Additionaly, a Redis DB is used to store session information. 
 
 - Runtime
     - Docker compatible runtime (version 1.12 or higher)
@@ -59,18 +59,13 @@ The Anchore Enterprise UI module interfaces with Anchore Engine using the standa
 - Storage
     - Configuration volume This volume is used to provide persistent storage to the container from which it will read its configuration files and optionally certificates.
     Requirement: Less than 1MB
-
-- Anchore Engine
-    - A configured and operational Anchore Engine version 0.2.4 or higher. For installation instructions refer to the following link.
-
-    **Note:** If the Anchore Engine has been configured to sync policies from the Anchore.IO service then you should disable the synchronization. In the credentials: section set the following option: auto_policy_sync: False
-
+      
 - Network
     - Ingress
         - The Anchore UI module publishes a web UI service by default on port 3000 however this port can be remapped.
     - Engress
         - The Anchore UI module requires access to two network services: 
-            - Anchore Engine API end point (typically port 8228)
+            - External API endpoint (typically port 8228)
             - Redis Database (typically port 6379)
 
 - Redis Service
@@ -80,4 +75,4 @@ The Anchore Enterprise UI module interfaces with Anchore Engine using the standa
 
 ### Next Steps
 
-If you feel you have a solid grasp of the requirements for deploying Anchore, we recommend following one of our [installation guides]({{< ref "/docs/installation" >}}).
+If you feel you have a solid grasp of the requirements for deploying Anchore Enterprise, we recommend following one of our [installation guides]({{< ref "/docs/installation" >}}).
