@@ -6,9 +6,8 @@ weight: 9
 
 ## Introduction
 
-Configuring Anchore Enterprise starts with configuring the core Anchore Engine deployment, along with specific configurations for each enterprise service.  Enterprise deployments using the trial quickstart (docker-compose) or production (using Helm or other) are designed to run by default with no modifications necessary to get started, though many options are available to tune your production deployment to fit your needs.  To start, please first refer to the Anchore Engine configuration guide, followed with finding enterprise service specific configuration options within their own sections.
-Anchore engine services require a single configuration which is ready from /config/config.yaml when each service starts up.  Settings in this file are mostly related to static settings that are fundamental to the deployment of anchore-engine services, and are most often updated when the system is being initially tuned for a deployment (and very infrequently need to be updated after they have been set as appropriate for any given deployment of anchore-engine).  By default, anchore-engine includes a config.yaml that is functional out of the box, with some parameters set to an environment variable for common site-specific settings (which are then set either in docker-compose.yaml, by the Helm chart, or as appropriate for other orchestration/deployment tools).
-To review an example config.yaml that will be embedded in the anchore engine container image (default config), see [the config.yaml on github](https://github.com/anchore/anchore-engine/blob/master/conf/default_config.yaml) and an associated example [docker-compose.yaml on github](https://github.com/anchore/anchore-engine/blob/master/docker-compose.yaml) which sets several environment variables required by the default config.yaml.
+Configuring Anchore Enterprise starts with configuring the core services, along with specific configurations for each enterprise service.  Enterprise deployments using the trial quickstart (docker-compose) or production (using Helm or other) are designed to run by default with no modifications necessary to get started, though many options are available to tune your production deployment to fit your needs. 
+All system (except the UI, which has its own configuration) services require a single configuration which is ready from /config/config.yaml when each service starts up.  Settings in this file are mostly related to static settings that are fundamental to the deployment of system services, and are most often updated when the system is being initially tuned for a deployment (and very infrequently need to be updated after they have been set as appropriate for any given deployment of anchore-engine).  By default, anchore-engine includes a config.yaml that is functional out of the box, with some parameters set to an environment variable for common site-specific settings (which are then set either in docker-compose.yaml, by the Helm chart, or as appropriate for other orchestration/deployment tools).
 
 - [Environment Variable Substitution]({{< ref "/docs/installation/configuration/using_env_vars" >}})
 - [Custom Certificates]({{< ref "/docs/installation/configuration/custom_certs" >}})
@@ -18,6 +17,7 @@ To review an example config.yaml that will be embedded in the anchore engine con
 - [Enterprise Feeds Service]({{< ref "/docs/installation/feeds" >}})
 - [Enterprise RBAC Module]({{< ref "/docs/installation/rbac" >}})
 - [Storage Configuration]({{< ref "/docs/installation/storage" >}})
+
 
 **NOTE** - The latest default configuration file can always be extracted from the Enterprise container to review the latest options and environment overrides using the following process:
 
