@@ -12,9 +12,9 @@ Policy bundles are the unit of policy definition and evaluation in Anchore Enter
 
 A policy bundle is a single JSON document, composed of several parts:
 
-- [Policies]({{< ref "/docs/overview/concepts/policy/policies" >}}) -  The named sets of rules and actions
-- [Mappings]({{< ref "/docs/overview/concepts/policy/policy_mappings" >}}) - Named sets of rule exclusions to override a match in a policy rule
-- [Whitelists]({{< ref "/docs/overview/concepts/policy/whitelists" >}}) - Ordered rules that determine which policies and whitelists should be applied to a specific image at evaluation time.
+- [Policies]({{< ref "/docs/overview/concepts/policy/policies" >}}) -  The named sets of rules and actions.
+- [Whitelists]({{< ref "/docs/overview/concepts/policy/whitelists" >}}) - Named sets of rule exclusions to override a match in a policy rule.
+- [Mappings]({{< ref "/docs/overview/concepts/policy/policy_mappings" >}}) - Ordered rules that determine which policies and whitelists should be applied to a specific image at evaluation time.
 - Whitelisted Images - Overrides for specific images to statically set the final result to a pass regardless of the policy evaluation result.
 - Blacklisted Images - Overrides for specific images to statically set the final result to a fail regardless of the policy evaluation result.
 

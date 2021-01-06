@@ -9,7 +9,7 @@ See [Issues](https://github.com/anchore/enterprise-docs/issues)
 ## Contributing
 
 See [Contributing](CONTRIBUTING.rst) for the DCO and sign-off information. In short, sign all
-commits with 'Signed-of-by X' with `git commit -s`.
+commits with 'Signed-off-by X' with `git commit -s`.
 
 ### Making Changes/Contribution Workflow
 
