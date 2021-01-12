@@ -1,10 +1,10 @@
 ---
-title: "Gitlab"
-linkTitle: "Gitlab"
+title: "GitLab"
+linkTitle: "GitLab"
 weight: 4
 ---
 
-### Adding Anchore Scanning to Gitlab
+### Adding Anchore Scanning to GitLab
 
 The Anchore Enterprise GitLab Scan integration enables vulnerability scanning via Anchore Enterprise in GitLab CI. This includes automatic conversion from the Anchore default vulnerability report format to GitLab's container scanning format, for display in the GitLab Security & Compliance Vulnerability UI.
 
