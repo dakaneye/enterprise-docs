@@ -71,7 +71,19 @@ JSON Reference:
                 "type": "JAVA-JAR"
             }
             ```
-* replace: a list of field name/value pairs to replace. Note: if a new field is specified here, it will be added to the content output when the correction is matched.
+* replace: a list of field name/value pairs to replace. Note: if a new field is specified here, it will be added to the content output when the correction is matched. See below for additional functionality around CPEs
         
 Corrections may be updated and deleted via the API as well. Creation of a Correction generates a UUID that may be used to reference that Correction later.
 Refer to the Enterprise Swagger spec for more details.
+
+## CPE Templating
+
+CPE replacement can be templated based on the other fields of the package as well. In the above example, a replacement could have been provided as follows:
+```json
+{
+  "field_name": "cpes",
+  "field_value": "cpe:2.3:a:pivotal_software:spring_security:{implementationVersion}:*:*:*:*:*:*:*" 
+}
+```
+
+For the "cpes" field only, Anchore Enterprise can recognize a templated field via curly braces "{}". Package JSON keys contained here will be replaced with their corresponding value.
