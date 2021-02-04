@@ -13,8 +13,9 @@ Anchore Enterprise is a Docker container static analysis and policy-based compli
 
 - [Introduction to Anchore Enterprise]({{< relref "overview" >}})
 - [Architecture Overview]({{< relref "overview/architecture" >}})
-- [Helm Installation]({{< relref "installation/helm" >}})
-- [Docker Compose Installation]({{< relref "installation/docker_compose" >}})
+- [Quickstart Guide Using Docker Compose]({{< ref "/docs/quickstart" >}})
+- [Production Installation Guide using Helm in Kubernetes]({{< relref "installation/helm" >}})
+
 
 
 

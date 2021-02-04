@@ -65,6 +65,8 @@ You can either click **Cancel** to abandon the repository analysis request at
 this point, or click **OK** to proceed, whereupon the specified repository will
 be flagged for analysis.
 
+Max image size configuration applies to repositories added via UI. See [max image size]({{< ref "/docs/using/cli_usage/images/_index.md#adding-an-image" >}})
+
 ### Analyze a Tag
 
 After clicking the **Analyze Tag** button, you are presented with the
@@ -102,6 +104,9 @@ information.
 
 Once you have populated the required fields and click **OK**, the specified tag
 will be scheduled for analysis. 
+
+Max image size configuration applies to images added via UI. See [max image size]({{< ref "/docs/using/cli_usage/images/_index.md#adding-an-image" >}})
+
 
 **Note:** Anchore will attempt to download images from any registry without
 requiring further configuration. However, if your registry needs authentication

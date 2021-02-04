@@ -18,6 +18,7 @@ All system (except the UI, which has its own configuration) services require a s
 - [Enterprise Feeds Service]({{< ref "/docs/installation/feeds" >}})
 - [Enterprise RBAC Module]({{< ref "/docs/installation/rbac" >}})
 - [Storage Configuration]({{< ref "/docs/installation/storage" >}})
+- [Max Image Size]({{< ref "/docs/installation/configuration/max_image_size" >}})
 
 
 **NOTE** - The latest default configuration file can always be extracted from the Enterprise container to review the latest options and environment overrides using the following process:

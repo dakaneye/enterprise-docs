@@ -35,14 +35,14 @@ as well for a consistent approach across ecosystems. It also includes several en
 
   * To help provide early detection of vulnerabilities before a fix is available or for issues where a fix is not issued, Anchore now uses RedHat's CVE information instead of RHSA information
   * This also provides improved whitelist consistency between RHEL/Centos and images based on other distros since CVEs are consistent
-  * For more details see [RHSA-to-CVE Feed Change]({{< ref "/docs/releasenotes/enterprise/2.3.0/centos_to_rhel_upgrade" >}})
+  * For more details see [RHSA-to-CVE Feed Change]({{< ref "/docs/releasenotes/2.3.0/centos_to_rhel_upgrade" >}})
 
 * Improved feed data and configuration management via APIs and CLI
 
   * New APIs and CLI commands allow dynamic configuration of which feeds to sync and the ability to enable/disable and delete feed data without updating configuration files or restarting containers.
   * See [CLI Feeds configuration]({{< ref "/docs/using/cli_usage/feeds/feed_configuration" >}})
 
-* **Built on Anchore Engine v0.7.1:** Anchore Enterprise is built on top of the OSS Anchore Engine, which has received new features and updates in the 0.7 series. See [Anchore Engine Release Notes]({{< ref "/docs/releasenotes/engine" >}}) for information on new features, bug fixes, and improvements in Anchore Engine for versions v0.7.0 and v0.7.1.
+* **Built on Anchore Engine v0.7.1:** Anchore Enterprise is built on top of the OSS Anchore Engine, which has received new features and updates in the 0.7 series. See [Anchore Engine Release Notes](https://engine.anchore.io/docs/releasenotes/) for information on new features, bug fixes, and improvements in Anchore Engine for versions v0.7.0 and v0.7.1.
 
 ### Changes
 
@@ -70,7 +70,7 @@ These changes are all configured by default in the new [quickstart guide]({{< re
 * Fixed missing scrollbar for context switching in UI
 * Fixed problem with sorting vulnerability columns in UI causing hangs and missing links
 * Updates to dependencies
-* Fixes in the Anchore Engine [v0.7.0 release notes]({{< ref "/docs/releasenotes/engine/0.7.0" >}}) and [v0.7.1 release notes]({{< ref "/docs/releasenotes/engine/071" >}})
+* Fixes in the Anchore Engine [v0.7.0 release notes](https://engine.anchore.io/docs/releasenotes/070/) and [v0.7.1 release notes](https://engine.anchore.io/docs/releasenotes/071/)
 
 ### Upgrading from Anchore Enterprise 2.2 to 2.3.0
 
@@ -81,7 +81,7 @@ the database upgrade, but part of the process can only complete after the upgrad
 will have no vulnerabilities listed. That will automatically resolve itself once the feed syncs, and all affected images will have CVE-based vulnerability matches as expected, but depending on deployment environment and number
 of images in the database, this may take a long time (hours potentially).
 
-See [RHSA-to-CVE Feed Change]({{< ref "/docs/releasenotes/enterprise/2.3.0/centos_to_rhel_upgrade" >}}) for more information on the change and upgrade implications. 
+See [RHSA-to-CVE Feed Change]({{< ref "/docs/releasenotes/2.3.0/centos_to_rhel_upgrade" >}}) for more information on the change and upgrade implications. 
 
 To upgrade, use the new version of the Helm chart or docker-compose provided with this release. The new chart and compose files contain all needed configuration changes. See [Enterprise Upgrade to 2.3.0]({{< ref "/docs/installation/upgrade" >}}) for details on this specific upgrade process and how to update your own deployment templates if you are not using the official Helm chart.
 

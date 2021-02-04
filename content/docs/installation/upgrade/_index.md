@@ -159,7 +159,7 @@ there will be vulnerability matches for both types after the new feed groups syn
 manually. Existing RHEL/CentOS/UBI images analyzed before the upgrade will have both RHSA and CVE matches. New images analyzed after upgrade will have 
 only CVE matches against the new data.
 
-**For more information on the upgrade process and how to flush the old RHSA matches see: [RHSA to CVE Migration]({{< ref "/docs/releasenotes/enterprise/2.3.0/centos_to_rhel_upgrade">}})**
+**For more information on the upgrade process and how to flush the old RHSA matches see: [RHSA to CVE Migration]({{< ref "/docs/releasenotes/2.3.0/centos_to_rhel_upgrade">}})**
 
 
 #### Upgrading with Helm Chart
@@ -224,7 +224,7 @@ The upgrade will run and complete by itself. Due to a feeds change in 2.3.0 to m
 matches for both types after the new feed groups sync. You can leave these matches or remove them by flushing the old data manually. Existing RHEL/CentOS/UBI images analyzed before
 the upgrade will have both RHSA and CVE matches. New images analyzed after upgrade will have only CVE matches against the new data.
 
-For more information on the upgrade process and how to flush the old RHSA matches see: [RHSA to CVE Migration]({{< ref "/docs/releasenotes/enterprise/2.3.0/centos_to_rhel_upgrade">}})
+For more information on the upgrade process and how to flush the old RHSA matches see: [RHSA to CVE Migration]({{< ref "/docs/releasenotes/2.3.0/centos_to_rhel_upgrade">}})
 
 #### Enterprise 2.3.0 Manual / Advanced Upgrade
 

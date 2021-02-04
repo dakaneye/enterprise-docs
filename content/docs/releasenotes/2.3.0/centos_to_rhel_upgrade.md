@@ -114,4 +114,4 @@ which syncs all groups automatically.
 
 ### Rolling Back
 
-If you need to restore the old behavior see the [rollback guide]({{< ref "/docs/releasenotes/enterprise/2.3.0/data_matching_rollback" >}})
+If you need to restore the old behavior see the [rollback guide]({{< ref "/docs/releasenotes/2.3.0/data_matching_rollback" >}})
