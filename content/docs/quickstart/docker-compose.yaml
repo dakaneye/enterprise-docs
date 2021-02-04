@@ -61,6 +61,7 @@ services:
       - ANCHORE_ENABLE_METRICS=false
       - ANCHORE_LOG_LEVEL=INFO
       - ANCHORE_CATALOG_NOTIFICATION_INTERVAL_SEC=0
+      - ANCHORE_ADMIN_PASSWORD=foobar
       # Uncomment both ANCHORE_OAUTH_ENABLED and ANCHORE_AUTH_SECRET to enable SSO feature of anchore-enterprise
       #- ANCHORE_OAUTH_ENABLED=true
       #- ANCHORE_AUTH_SECRET=supersharedsecret
