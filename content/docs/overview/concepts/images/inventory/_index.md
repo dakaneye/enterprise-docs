@@ -14,8 +14,23 @@ Currently, supported runtime environments include:
 Anchore uses a go binary called [kai](https://github.com/anchore/kai) that leverages the [Kubernetes Go SDK](https://github.com/kubernetes/client-go) to reach out and list
 pods in a configurable set of namespaces to determine which images are running.
 
-This binary is installed into the Enterprise Docker Image and can be configured using the REST API, but depends on Anchore knowing your cluster configuration and corresponding credentials. On the other hand, `kai` can also be run via it's helm chart, embedded within your Kubernetes cluster as an agent. In this run-mode, it will require access to the Anchore API.  
+If you're running your Anchore deployment in Kubernetes, congratulations! Anchore can grab runtime inventory information from the cluster that Anchore is in out-of-the-box.
+In the Anchore Helm Chart, there is a section of the values file under `anchoreCatalog` called `runtime_inventory`. It looks something like this:
+```yaml
+runtime_inventory:
+  kubernetes:
+    report_anchore_cluster:
+      enabled: true
+      anchore_cluster_name: anchore
+      namespaces:
+        - all
+  image_ttl_days: 1
+```
+By default, it will check all namespaces (using the same kubernetes service-account as Anchore) in your current cluster and assign each image reported a context based on `<anchore_cluster_name>/<namespace>`. You can disable this, change the cluster name, or specify which namespaces you want by editing your `values.yaml` file.
 
+If you're not running your Anchore deployment in Kubernetes, have no fear, the `kai` binary is installed into the Enterprise Docker Image and can be configured using the REST API, but depends on Anchore knowing your cluster configuration and corresponding credentials. On the other hand, `kai` can also be run via it's helm chart, embedded within your Kubernetes cluster as an agent. In this run-mode, it will require access to the Anchore API.  
+
+The following sections elaborate on the non-out-of-the-box configuration of Runtime Inventory
 ## Embedded mode
 
 In embedded mode, `kai` runs within the Enterprise Image, and needs a cluster configuration to access the Kubernetes API.
@@ -151,3 +166,14 @@ The key configurations are in the `kai.anchore` section. Kai must be able to res
 Note: the Anchore API Password can be provided via a kubernetes secret, or injected into the environment of the `kai` container
 * For injecting the environment variable, see: `inject_secrets_via_env`
 * For providing your own secret for the Anchore API Password, see: `kai.existing_secret`. `kai` creates it's own secret based on your values.yaml file for key `kai.anchore.password`, but the `kai.existingSecret` key allows you to create your own secret and provide it in the values file.
+
+# Image Time-To-Live
+As part of reporting images in your runtime environment, Anchore maintains an active record of that set of images based on two points of criteria:
+1. The Image has been last reported by `kai` in a time less than your configured `runtime_inventory.image_ttl_days`
+1. If that Image's digest is found in Anchore's working set of analyzed images, it will not be removed from the inventory image set
+
+By default an image's TTL is set to 1 day. That means, that if `kai` hasn't seen your image in it's configured contexts for more than a day, AND that particular image digest is not found in the working set of analyzed images (see `anchore-cli image list`), it will be removed from the active working inventory image set (no longer returned from `GET /v1/enterprise/inventories`)
+
+Image TTL can be disabled, if you only want `/v1/enterprise/inventories` to return a recent set of active images, just set the value of `runtime_inventory.image_ttl_days` to `-1`. If set to `-1`, then the `/v1/enterprise/inventories` API will always show the latest inventory reported by `kai`.
+
+Currently, a maximum of 7 days can be set for Image TTL, but to be clear, if an image is not found in the runtime environment but IS in Anchore for analysis (`anchore-cli image list`) it will NOT be removed
