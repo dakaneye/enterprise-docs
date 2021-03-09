@@ -20,11 +20,11 @@ Checks against the content of a dockerfile if provided, or a guessed dockerfile 
 | instruction | Triggers if any directives in the list are found to match the described condition in the dockerfile. | check | The type of check to perform. | = |
 | instruction | Triggers if any directives in the list are found to match the described condition in the dockerfile. | value | The value to check the dockerfile instruction against. | scratch |
 | instruction | Triggers if any directives in the list are found to match the described condition in the dockerfile. | actual_dockerfile_only | Only evaluate against a user-provided dockerfile, skip evaluation on inferred/guessed dockerfiles. Default is False. | true |
-| effective_user | Checks if the effective user matches the provided user names, either as a whitelist or blacklist depending on the type parameter setting. | users | User names to check against as the effective user (last user entry) in the images history. | root,docker |
-| effective_user | Checks if the effective user matches the provided user names, either as a whitelist or blacklist depending on the type parameter setting. | type | How to treat the provided user names. | blacklist |
-| exposed_ports | Evaluates the set of ports exposed. Allows configuring whitelist or blacklist behavior. If type=whitelist, then any ports found exposed that are not in the list will cause the trigger to fire. If type=blacklist, then any ports exposed that are in the list will cause the trigger to fire. | ports | List of port numbers. | 80,8080,8088 |
-| exposed_ports | Evaluates the set of ports exposed. Allows configuring whitelist or blacklist behavior. If type=whitelist, then any ports found exposed that are not in the list will cause the trigger to fire. If type=blacklist, then any ports exposed that are in the list will cause the trigger to fire. | type | Whether to use port list as a whitelist or blacklist. | blacklist |
-| exposed_ports | Evaluates the set of ports exposed. Allows configuring whitelist or blacklist behavior. If type=whitelist, then any ports found exposed that are not in the list will cause the trigger to fire. If type=blacklist, then any ports exposed that are in the list will cause the trigger to fire. | actual_dockerfile_only | Only evaluate against a user-provided dockerfile, skip evaluation on inferred/guessed dockerfiles. Default is False. | true |
+| effective_user | Checks if the effective user matches the provided user names, either as a allowlist or blocklist depending on the type parameter setting. | users | User names to check against as the effective user (last user entry) in the images history. | root,docker |
+| effective_user | Checks if the effective user matches the provided user names, either as a allowlist or blocklist depending on the type parameter setting. | type | How to treat the provided user names. | blocklist |
+| exposed_ports | Evaluates the set of ports exposed. Allows configuring allowlist or blocklist behavior. If type=whitelist, then any ports found exposed that are not in the list will cause the trigger to fire. If type=blacklist, then any ports exposed that are in the list will cause the trigger to fire. | ports | List of port numbers. | 80,8080,8088 |
+| exposed_ports | Evaluates the set of ports exposed. Allows configuring allowlist or blocklist behavior. If type=whitelist, then any ports found exposed that are not in the list will cause the trigger to fire. If type=blacklist, then any ports exposed that are in the list will cause the trigger to fire. | type | Whether to use port list as a allowlist or blocklist. | blacklist |
+| exposed_ports | Evaluates the set of ports exposed. Allows configuring allowlist or blocklist behavior. If type=whitelist, then any ports found exposed that are not in the list will cause the trigger to fire. If type=blacklist, then any ports exposed that are in the list will cause the trigger to fire. | actual_dockerfile_only | Only evaluate against a user-provided dockerfile, skip evaluation on inferred/guessed dockerfiles. Default is False. | true |
 | no_dockerfile_provided | Triggers if anchore analysis was performed without supplying the actual image Dockerfile. | | | |
 
 ### Gate: files
@@ -163,7 +163,7 @@ Triggers that fire unconditionally if present in policy, useful for things like 
 
 | Trigger Name | Description | Parameter | Description | Example |
 | :----------- | :---------- | :-------- | :---------- | :------ |
-| always | Fires if present in a policy being evaluated. Useful for things like blacklisting images or testing mappings and whitelists by using this trigger in combination with policy mapping rules. | | | |
+| always | Fires if present in a policy being evaluated. Useful for things like blacklisting images or testing mappings and allowlists by using this trigger in combination with policy mapping rules. | | | |
 
 ### Gate: retrieved_files
 

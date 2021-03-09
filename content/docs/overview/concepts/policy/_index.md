@@ -9,7 +9,7 @@ Once an image has been analyzed and its content has been discovered, categorized
  A policy is expressed as a policy bundle, which is made up from a set of rules that are used to perform an evaluation a container image. The rules can define checks against an image for things such as:
 
 - security vulnerabilities
-- package whitelists and blacklists
+- package allowlists and denylists
 - configuration file contents
 - presence of credentials in image
 - image manifest changes

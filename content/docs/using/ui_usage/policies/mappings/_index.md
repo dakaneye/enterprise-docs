@@ -27,7 +27,7 @@ In this example an imaged named **registry.example.com/anchore/webapi:latest** w
 
 The mappings are applied in order, from top to bottom and the system will stop at the first match.
 
-Note: The trusted images and blacklisted images lists take precedence over the mapping. See this document for details.
+Note: The trusted images and blacklisted images lists take precedence over the mapping. See [this document]({{< ref "/docs/using/ui_usage/policies/image_whitelist_blacklist" >}}) for details.
 
 The empty policy bundle includes no mappings. Press the ![alt text](LetsAddOne.jpeg) to add your first mapping.
 
@@ -41,14 +41,14 @@ The *Add a New Mapping* dialog will be displayed and includes mandatory fields f
 | ---------- | ----------- |
 | Name | A unique name to describe the mapping. eg. "Mapping for webapps" |
 | Policy | Name of policy to use for evaluation. A drop down will be displayed allowing selection of a single policy |
-| Whitelist | Optional: The whitelist(s) to be applied to the image evaluation. Multiple whitelists may be applied to the same image. |
+| Allowlist | Optional: The allowlist(s) to be applied to the image evaluation. Multiple allowlists may be applied to the same image. |
 | Registry | The name of the registry to match. Note the name should exactly match the name used to submit the image or repo for analysis eg. foo.example.com:5000 is different to foo.example.com Wildcards are supported. A single * would specify any registry. |
 | Repository | The name of the repository, optionally including namespace eg. webapp/foo Wildcards are supported. A single * would specify any repository. Partial names with wildcards are supported. eg. web*/* |
 | Tag | Tags mapped by this rule. eg. latest Wildcard are supported. A single * would match any tag. Partial names with wildcards are supported. eg 2018* |
 
 Each entry field includes an indicator showing if the current entry is valid ![alt text](Check.png) or has errors ![alt text](X.png).
 
-In the screenshot below you can see multiple policy mappings have been defined some of which include one or more whitelists.
+In the screenshot below you can see multiple policy mappings have been defined some of which include one or more allowlists.
 
 **Note:** As of Anchore Engine 0.2.1 only a single policy can be mapped to an image, however a later version of the engine will support mapping multiple policies to an image. This will simplify policy creation allowing smaller 'building blocks' to be assembled together to form a final set of policies rather than require duplication of checks between policies.
 

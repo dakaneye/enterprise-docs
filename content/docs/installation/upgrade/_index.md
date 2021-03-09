@@ -105,6 +105,14 @@ If for any reason the automated upgrade fails, or you would like to perform the 
 ---
 This section is intended as a guide for any special instructions and information related to upgrading to specific versions of Enterprise.
 
+### Upgrading Enterprise 2.3 to 2.4+
+
+The major change between 2.3.x and 2.4+ is that the Helm chart repo has moved from helm/stable to charts.anchore.io. To upgrade from a previous version of the chart, you will need to delete your previous deployment and redeploy Anchore Enterprise using the chart from the Anchore Charts repository.
+
+Detailed instructions are available in the [anchore-charts git repo](https://github.com/anchore/anchore-charts/tree/master/stable/anchore-engine#migrating-to-the-new-anchore-charts-repository).
+
+---
+
 ### Upgrading Enterprise 2.2 (Image anchore/enterprise:v0.6.1) to 2.3.0
 
 

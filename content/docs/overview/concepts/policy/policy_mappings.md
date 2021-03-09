@@ -4,7 +4,7 @@ linkTitle: "Mappings"
 weight: 4
 ---
 
-Mappings in the policy bundle are a set of rules, evaluated in order, that describe matches on an image, id, digest, or tag and the corresponding sets of policies and whitelists to apply to any image that matches the rule's criteria.
+Mappings in the policy bundle are a set of rules, evaluated in order, that describe matches on an image, id, digest, or tag and the corresponding sets of policies and allowlists to apply to any image that matches the rule's criteria.
 
 A mapping has:
 
@@ -84,9 +84,9 @@ Example 3, all images from a non-known registry will be evaluated against *defau
 ]
 ```
 
-### Using Multiple Policies and Whitelists
+### Using Multiple Policies and Allowlists
 
-The result of the evaluation of the mapping section of a policy bundle is the list of policies and whitelists that will be used for actually evaluating the image. Because multiple policies and whitelists can be specified in each mapping rule, you can use granular policies and whitelists and the combined them in the mapping rules. 
+The result of the evaluation of the mapping section of a policy bundle is the list of policies and allowlists that will be used for actually evaluating the image. Because multiple policies and allowlists can be specified in each mapping rule, you can use granular policies and allowlists and the combined them in the mapping rules. 
 
 Examples of schemes to use for how to split-up policies include:
 
@@ -96,4 +96,4 @@ Examples of schemes to use for how to split-up policies include:
 
 ### Next Steps
 
-Read more about the [whitelists]({{< ref "/docs/overview/concepts/policy/whitelists" >}}) component of a policy bundle.
+Read more about the [allowlists]({{< ref "/docs/overview/concepts/policy/whitelists" >}}) component of a policy bundle.

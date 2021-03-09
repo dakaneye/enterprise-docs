@@ -13,10 +13,10 @@ Policy bundles are the unit of policy definition and evaluation in Anchore Enter
 A policy bundle is a single JSON document, composed of several parts:
 
 - [Policies]({{< ref "/docs/overview/concepts/policy/policies" >}}) -  The named sets of rules and actions.
-- [Whitelists]({{< ref "/docs/overview/concepts/policy/whitelists" >}}) - Named sets of rule exclusions to override a match in a policy rule.
-- [Mappings]({{< ref "/docs/overview/concepts/policy/policy_mappings" >}}) - Ordered rules that determine which policies and whitelists should be applied to a specific image at evaluation time.
-- Whitelisted Images - Overrides for specific images to statically set the final result to a pass regardless of the policy evaluation result.
-- Blacklisted Images - Overrides for specific images to statically set the final result to a fail regardless of the policy evaluation result.
+- [Allowlists]({{< ref "/docs/overview/concepts/policy/whitelists" >}}) - Named sets of rule exclusions to override a match in a policy rule.
+- [Mappings]({{< ref "/docs/overview/concepts/policy/policy_mappings" >}}) - Ordered rules that determine which policies and allowlists should be applied to a specific image at evaluation time.
+- Allowlisted Images - Overrides for specific images to statically set the final result to a pass regardless of the policy evaluation result.
+- Blocklisted Images - Overrides for specific images to statically set the final result to a fail regardless of the policy evaluation result.
 
 Example JSON for an empty bundle, showing the sections and top-level elements:
 
@@ -66,21 +66,21 @@ The above example defines a stop action to be produced for all package vulnerabi
 
 For information on how policies work and are evaluated, see: Policies
 
-### Whitelists
+### Allowlists
 
-A whitelist is a set of exclusion rules for trigger matches found during policy evaluation. A whitelist defines a specific gate and trigger_id (part of the output of a policy rule evaluation) that should have it's action recommendation statically set to go. When a policy rule result is whitelisted, it is still present in the output of the policy evaluation, but it's action is set to go and it is indicated that there was a whitelist match.
+A allowlist is a set of exclusion rules for trigger matches found during policy evaluation. A allowlist defines a specific gate and trigger_id (part of the output of a policy rule evaluation) that should have it's action recommendation statically set to go. When a policy rule result is allowlisted, it is still present in the output of the policy evaluation, but it's action is set to go and it is indicated that there was a allowlist match.
 
-Whitelists are useful for things like:
+Allowlist are useful for things like:
 
 - Ignoring CVE matches that are known to be false-positives
 - Ignoring CVE matches on specific packages (perhaps if they are known to be custom patched)
 
-Example of a simple whitelist as a JSON object from a bundle:
+Example of a simple allowlist as a JSON object from a bundle:
 
 ```JSON
 {
   "id": "whitelist1",
-  "name": "Simple Whitelist",
+  "name": "Simple Allowlist",
   "version": "1_0",
   "items": [
     { "id": "item1", "gate": "vulnerabilities", "trigger": "package", "trigger_id": "CVE-10000+libssl" },
@@ -120,32 +120,32 @@ Example of a simple mapping rule set:
 
 For more information about mappings see: Mappings
 
-### Whitelisted Images
+### Allowlisted Images
 
-Whitelisted images are images, defined by registry, repository, and tag/digest/imageId, that will always result in a pass status for bundle evaluation unless the image is also matched in the blacklisted images section.
+Allowlisted images are images, defined by registry, repository, and tag/digest/imageId, that will always result in a pass status for bundle evaluation unless the image is also matched in the blacklisted images section.
 
-Example image whitelist section:
+Example image allowlist section:
 
 ```JSON
 { 
-  "name": "WhitelistDebianStable",
+  "name": "AllowlistDebianStable",
   "registry": "docker.io",
   "repository": "library/debian",
   "image": { "type": "tag", "value": "stable" }
 }
 ```
 
-### Blacklisted Images
+### Blocklisted Images
 
-Blacklisted images are images, defined by registry, repository, and tag/digest/imageId, that will always result in a policy bundle evaluation status of fail. It is important to note that blacklisting an image does not short-circuit the mapping evaluation or policy evaluations, so the full set of trigger matches will still be visible in the bundle evaluation result.
+Blocklisted images are images, defined by registry, repository, and tag/digest/imageId, that will always result in a policy bundle evaluation status of fail. It is important to note that blacklisting an image does not short-circuit the mapping evaluation or policy evaluations, so the full set of trigger matches will still be visible in the bundle evaluation result.
 
-Blacklisted image matches override any whitelisted image matches (e.g. a tag matches a rule in both lists will always be blacklisted/fail).
+Blacklisted image matches override any allowlisted image matches (e.g. a tag matches a rule in both lists will always be blocklisted/fail).
 
 Example image blacklist section:
 
 ```JSON
 { 
-  "name": "BlacklistDebianUnstable",
+  "name": "BlAocklistDebianUnstable",
   "registry": "docker.io",
   "repository": "library/debian",
   "image": { "type": "tag", "value": "unstable" }
@@ -162,7 +162,7 @@ A complete bundle example with all sections containing data:
   "comment": "My system's default bundle",
   "whitelisted_images": [
     {
-      "name": "WhitelistDebianStable",
+      "name": "AllowlistDebianStable",
       "registry": "docker.io",
       "repository": "library/debian",
       "image": { "type": "tag", "value": "stable" }
@@ -196,8 +196,8 @@ A complete bundle example with all sections containing data:
   ],
   "whitelists": [
     {
-      "id": "whitelist1",
-      "name": "Simple Whitelist",
+      "id": "allowlist1",
+      "name": "Simple Allowlist",
       "version": "1_0",
       "items": [
         { "id": "item1", "gate": "vulnerabilities", "trigger": "package", "trigger_id": "CVE-10000+libssl" },
@@ -205,8 +205,8 @@ A complete bundle example with all sections containing data:
       ]
     },
     {
-      "id": "whitelist2",
-      "name": "Simple Whitelist",
+      "id": "allowlist2",
+      "name": "Simple Allowlist",
       "version": "1_0",
       "items": [
         { "id": "item1", "gate": "vulnerabilities", "trigger": "package", "trigger_id": "CVE-1111+*" }
@@ -260,12 +260,12 @@ A complete bundle example with all sections containing data:
 
 A bundle evaluation results in a status of: *pass* or *fail* and that result based on the evaluation:
 
-1. The mapping section to determine with policies and whitelists to select for evaluation against the given image and tag
-2. The output of the policies' triggers and applied whitelists.
-3. Blacklisted images section
-4. Whitelisted images section
+1. The mapping section to determine with policies and allowlists to select for evaluation against the given image and tag
+2. The output of the policies' triggers and applied allowlists.
+3. Blocklisted images section
+4. Allowlisted images section
 
-A *pass* status means the image evaluated against the bundle and only *go* or *warn* actions resulted from the policy evaluation and whitelist evaluations, or the image was whitelisted. A fail status means the image evaluated against the bundle and at least one *stop* action resulted from the policy evaluation and whitelist evaluation, or the image was blacklisted.
+A *pass* status means the image evaluated against the bundle and only *go* or *warn* actions resulted from the policy evaluation and allowlisted evaluations, or the image was allowlisted. A fail status means the image evaluated against the bundle and at least one *stop* action resulted from the policy evaluation and allowlist evaluation, or the image was blacklisted.
 
 The flow chart for policy bundle evaluation:
 

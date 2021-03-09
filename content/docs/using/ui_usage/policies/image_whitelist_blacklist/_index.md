@@ -8,12 +8,12 @@ weight: 6
 
 ![alt text](TrustedBlacklistedLogo.jpeg)
 
-The *Trusted / Blacklisted Images* tab is split into two sub tabs for:
+The *Trusted / Blocklisted Images* tab is split into two sub tabs for:
 
 - Trusted Images
   A list of images which will always pass policy evaluation irrespective of any policies that are mapped to them.
 
-- Blacklisted Imags
+- Blocklisted Imags
   A list if Images which will always fail policy evaluation irrespective of any policies that are mapped to them.
 
 Images can be referenced in one of three ways:
@@ -29,11 +29,11 @@ Images can be referenced in one of three ways:
 
 For most use cases Anchore recommends that the digest is used to reference the image since an image name is ambiguous, as over time different images may be tagged with the same name. 
 
-If an image may appear on both the Trusted Images and Blacklisted Images lists then the blacklist takes precedence and the image will be failed.
+If an image may appear on both the Trusted Images and Blocklisted Images lists then the blocklist takes precedence and the image will be failed.
 
 **Note:** See Evaluating Images against Policies for details on image policy evaluation.
 
-The Trusted Images and Blacklisted Images tabs provide similar user interfaces allowing the list of trusted, or blacklisted, images to be maintained.
+The Trusted Images and Blocklisted Images tabs provide similar user interfaces allowing the list of trusted, or blocklisted, images to be maintained.
 
 The Trusted Images list will show a list of any Trusted Images defined by the system includes the following fields:
 
@@ -52,11 +52,11 @@ The Trusted Images list will show a list of any Trusted Images defined by the sy
 
 ![alt text](TrustedImageTab.png)
 
-### Adding New Trusted or Blacklisted Images.
+### Adding New Trusted or Blocklisted Images.
 
 New Images can by added by pressing the ![alt text](AddTrustedImageButton.jpeg) or ![alt text](AddBlacklistedImage.jpeg) buttons.
 
-The workflow for adding Trusted or Blacklisted images is identical. In the example below we will add new Trusted images.
+The workflow for adding Trusted or Blocklisted images is identical. In the example below we will add new Trusted images.
 
 The user will be prompted for a name to reference this image. The name does not have to be unique but it is recommended to that the identifier is descriptive.
 

@@ -101,7 +101,7 @@ Each output match from a rule contains the matching rule's:
 - Trigger
 - A trigger_id identifying the match
 - Check Output -  A short message (human readable) describing the condition and match details
-- Whitelisted - a JSON object of details about a whitelist match (whitelist id and whitelist item id if available), or a 'false' if the match was not whitelisted
+- Allowlisted - a JSON object of details about a allowlist match (allowlist id and allowlist item id if available), or a 'false' if the match was not allowlisted
 - Policy ID - the id of the policy that generated this match, to disambiguate in cases where multiple policies are evaluated as defined in the bundle. See: policy bundle
 
 Excerpt from a bundle evaluation, showing just the policy evaluation output:
@@ -160,7 +160,7 @@ The *final action* of a policy evaluation will be:
 - **warn** - If there are any triggers that match with this action, and no triggers that match with stop, then the policy evaluation will result in *warn*.
 - **go** - If there are no triggers that match with either stop or warn, then the policy evaluation is result is a *go*. *go* actions have no impact on the evaluation result, but are useful for recording the results of specific checks on an image in the audit trail of policy evaluations over time
 
-The policy evaluation is one part of the broader policy bundle evaluation which includes things like image whitelists and blacklists and makes a final bundle evaluation status determination based on the combination of several component executions. See [policy bundles]({{< ref "/docs/overview/concepts/policy/bundles" >}}) for more information on that process.
+The policy evaluation is one part of the broader policy bundle evaluation which includes things like image allowlists and blacklists and makes a final bundle evaluation status determination based on the combination of several component executions. See [policy bundles]({{< ref "/docs/overview/concepts/policy/bundles" >}}) for more information on that process.
 
 ### Next Steps
 
