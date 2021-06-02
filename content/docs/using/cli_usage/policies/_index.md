@@ -16,7 +16,7 @@ At a high-level Anchore Enterprise consumes policies store in a Policy Bundle th
 - Whitelisted Images
 - Blacklisted Images
 
-Anchore Enterprise can store multiple policy bundles for each user, but only one bundle can be active at any point in time. It is common to store historic bundles to allow previous policies and evaluations to be inspected. The active bundle is the one used for evaluation for notifications, incoming kubernetes webhooks (unless configured otherwise), and other automatic system functions, but a user may request evaluation of any bundle stored in the system using that bundle's id.
+Anchore Enterprise can store multiple policy bundles for each account, but only one bundle can be active at any point in time. All users within an account share the same set of bundles. It is common to store historic bundles to allow previous policies and evaluations to be inspected. The active bundle is the one used for evaluation for notifications, incoming kubernetes webhooks (unless configured otherwise), and other automatic system functions, but a user may request evaluation of any bundle stored in the system using that bundle's id.
 
 For more information on the content and semantics of policy bundles see: Policy Bundles and Evaluation
 

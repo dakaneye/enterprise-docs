@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   description: "Enterprise API Managing Notifications"
-  version: "1.0.0"
+  version: "1.0.1"
   title: "Anchore Enterprise Notifications API"
   contact:
     email: "dev@anchore.com"
@@ -1340,6 +1340,38 @@ paths:
           description: List of selectors
           schema:
             $ref: "#/definitions/SelectorList"
+  /internal/endpoints/{name}/configurations/{uuid}/notify:
+    post:
+      description: notify the configuration for the specified endpoint with the provided payload. Currently only internal services can call this endpoint
+      x-swagger-router-controller: anchore_enterprise.services.notifications.api.controllers.internal
+      operationId: notify
+      x-anchore-authz-action: notifyEndpointConfiguration
+      parameters:
+        - name: name
+          type: string
+          in: path
+          required: true
+          enum:
+            - slack
+            - jira
+            - smtp
+            - github
+            - teams
+            - webhook
+        - name: uuid
+          type: string
+          in: path
+          required: true
+        - name: payload
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/SynchronousNotificationPayload"
+      responses:
+        200:
+          description: The endpoint configuration was notified successfully
+          schema:
+            $ref: "#/definitions/DispatchResult"
 definitions:
   ApiErrorResponse:
     description: "Generic HTTP API error response"
@@ -1725,3 +1757,39 @@ definitions:
           - unknown
           - healthy
           - unhealthy
+  SynchronousNotificationPayload:
+    type: object
+    description: defines a notification payload that can be sent synchronously
+    properties:
+      type:
+        type: string
+  ActionPlanNotificationPayload:
+    allOf:
+      - $ref: "#/definitions/SynchronousNotificationPayload"
+      - type: object
+        description: defines an action plan payload that can be sent synchronously
+        properties:
+          uuid:
+            type: string
+          image_tag:
+            type: string
+          image_digest:
+            type: string
+          bundle_id:
+            type: string
+          subject:
+            type: string
+          message:
+            type: string
+  DispatchResult:
+    type: object
+    description: Result of a notification dispatch request
+    properties:
+      notification:
+        type: object
+        description: The notification object that was sent. Not documented in more detail at present due to different notification schemas exposed
+      status:
+        type: string
+      details:
+        type: string
+        description: Additional delivery result details

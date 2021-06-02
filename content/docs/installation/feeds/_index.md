@@ -60,17 +60,17 @@ It is also possible to set the token with the following environment variable: `A
 
 #### MSRC Driver
 
-MSRC driver requires access to Microsoft Security Update API for raw source data. Access to this API is gated by an API key. To request an API key head over to https://portal.msrc.microsoft.com/en-us/developer and create an account. 
+MSRC driver requires access to Microsoft Security Update API for raw source data. Access to this API is gated by an API key. To request an API key head over to https://portal.msrc.microsoft.com/en-us/developer and create an account.
 
-NOTE: The service may currently require @outlook.com, @live.com or @microsoft.com email address for generating an API key. If you do not have one of these email addresses, you can create a personal outlook account to access this service       
+NOTE: The service may currently require @outlook.com, @live.com or @microsoft.com email address for generating an API key. If you do not have one of these email addresses, you can create a personal outlook account to access this service
 
-Once an API key is available, the feed driver must be enabled and configured to use it 
+Once an API key is available, the feed driver must be enabled and configured to use it
 
 - For quickstart and deployments using docker-compose.yaml: Find the `feeds` service definition and uncomment or add the following environment variables
 
     ```YAML
     services:
-      ...  
+      ...
       feeds:
       ...
         environment:
@@ -79,11 +79,11 @@ Once an API key is available, the feed driver must be enabled and configured to 
         - ANCHORE_ENTERPRISE_FEEDS_MSRC_DRIVER_API_KEY=<api-key>
     ```
 
-- For deployments using config.yaml: Find the `feeds` configuration section and update the f
- 
+- For deployments using config.yaml: Update the `feeds` configuration section
+
     ```YAML
     services:
-      ...  
+      ...
       feeds:
       ...
         drivers:

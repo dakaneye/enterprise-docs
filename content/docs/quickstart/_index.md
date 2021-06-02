@@ -52,7 +52,7 @@ You can use the link at the top of this page, or use curl or wget to download it
 
 ### Step 3: Verify service availability
 
-After a few moments (depending on system speed) Anchore Enterprise and Anchore UI services should be up and running, ready to use.  You can verify the containers are running with docker-compose:
+After a few minutes (depending on system speed) Anchore Enterprise and Anchore UI services should be up and running, ready to use.  You can verify the containers are running with docker-compose:
 
 ```
 # docker-compose ps
@@ -91,7 +91,7 @@ Engine Code Version: 2.3.0
 
 ```
 
-**Note:** The first time you run Anchore Enterprise, it will take some time (10+ minutes, depending on network speed) for the vulnerability data to get synced into the system.  For the best experience, wait until the core vulnerability data feeds have completed before proceeding.  You can check the status of your feed sync using the CLI:
+**Note:** The first time you run Anchore Enterprise, it will take a while (2+ hours in many cases, depending on network speed) for the vulnerability data to get synced into the system.  For the best experience, wait until the core vulnerability data feeds have completed before proceeding.  You can check the status of your feed sync using the CLI:
 
 ```
 # docker-compose exec api anchore-cli system feeds list

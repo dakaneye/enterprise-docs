@@ -16,7 +16,7 @@ This is constructed with the UI endpoint and path _/service/sso/auth/{IDP Config
  
 ### Configure Okta: Add an Application 
 
-See [Okta SAML confg](https://developer.okta.com/docs/guides/saml-application-setup/overview/) to see how to create a new 
+See [Okta SAML config](https://developer.okta.com/docs/guides/saml-application-setup/overview/) to see how to create a new 
 application authorization server. The following steps are used during specific steps of that walk-thru
 
 ![Example Setup Screen](sso_okta_client_config.png)
@@ -24,7 +24,7 @@ application authorization server. The following steps are used during specific s
 1. In step #6 
     1. `Single sign on URL`, this is the URL Okta will direct users to. This must be a URL in the Anchore Enterprise UI 
     based on the name you chose for the configuration. In our example: `http://localhost:3000/service/sso/auth/okta`
-    1. Set the `Use this for Receipient URL and Destination URL` checkbox as well.
+    1. Set the `Use this for Recipient URL and Destination URL` checkbox as well.
     a1. Set the `Audience URI(SP Entity ID)` to a URI that will identify the anchore installation. This can be the same as 
     the single-sign-on URL for simplicity. We'll need to enter this value later in the Anchore config as well.
     1. Leave `Default RelayState` empty

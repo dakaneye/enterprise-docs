@@ -623,7 +623,7 @@ definitions:
         description: The SAML attribute to use from the response assertions to determine the anchore username. If unset, the subject is used.
       idp_account_attribute:
         type: string
-        description: The SAML attribute to use from the response assertions to determine the anchore username. If unset, the default is used.
+        description: The SAML attribute to use from the response assertions to determine the anchore account to use. If unset, the default is used.
       idp_role_attribute:
         type: string
         description: The SAML attribute to use from the response assertions to determine the anchore role(s) to assign a new user in the specified account. If unset, the default is used.
